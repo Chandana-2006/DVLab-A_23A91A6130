@@ -1,21 +1,36 @@
+airquality
+class(airquality)
+hist(airquality$Temp)
+
+View(airquality)
+
+hist(airquality$Temp,
+     breaks=5,
+     main= "Basic Histogram of Air Quality",
+     xlab= "Temperature",
+     ylab= "Range",
+     labels=TRUE,
+     col = "lightblue",
+     border = "darkblue")
+
 library(ggplot2)
+ggplot(
+  airquality,
+  aes(x=Temp)
+)+
+  geom_histogram(
+    bins = 12,
+    fill = "lightblue",
+    col = "darkblue")+
+  # labs(
+  #   title= "GGPLOT- Histogram for Air Quality",
+  #   x = "Temperature",
+  #   y = "Range" ) +
+  facet_wrap(~ Month) +
+  labs(
+    title = "Monthly Temperature Distribution",
+    x = "Temperature",
+    y = "Frequency"
+  ) +
+  theme_light()
 
-# Load dataset
-data("airquality")
-
-# Remove NA values
-df <- na.omit(airquality)
-
-# Histogram of Daily Maximum Temperature (La Guardia Airport)
-
-p1 <- ggplot(df, aes(x = Temp)) +
-  geom_histogram(binwidth = 5, fill = "blue", color = "black") +
-  labs(title = "Histogram of Daily Maximum Temperature\n(La Guardia Airport, 1973)",
-       x = "Temperature (°F)",
-       y = "Frequency") +
-  theme_minimal()
-
-p1
-
-# Save plot
-ggsave("plots/week1B_plot_-1.png", plot = p1)
