@@ -30,7 +30,7 @@ mosaic( HairEyeColor,shade = TRUE, legend = TRUE,
 #Convert Datasetto Data Frame (For ggplot)
 hair_eye_df <-as.data.frame(HairEyeColor)
 head(hair_eye_df)
-#ggplot Alternative (Proportional Mosaic-Style Plot)
+#ggplot Alternative (Proportional Mosaic-Style plot)
 library(ggplot2)
 ggplot(hair_eye_df,aes(x = Hair, y = Freq, fill = Eye)) +
   geom_bar(stat = "identity",position = "fill") +
